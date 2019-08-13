@@ -1,0 +1,25 @@
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "io.gitlab.arturbosch.detekt:detekt-api:$detekt_version"
+
+    testImplementation "io.gitlab.arturbosch.detekt:detekt-test:$detekt_version"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.4.2"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:5.4.2"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:5.4.2"
+}
+
+sourceCompatibility = "6"
+targetCompatibility = "6"
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.6"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.6"
+    }
+}

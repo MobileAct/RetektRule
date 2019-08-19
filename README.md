@@ -1,6 +1,24 @@
 # Retekt
-[![Build Status](https://dev.azure.com/MobileAct/RetektRule/_apis/build/status/MobileAct.RetektRule?branchName=master)](https://dev.azure.com/MobileAct/RetektRule/_build/latest?definitionId=6&branchName=master)  
+[![Build Status](https://dev.azure.com/MobileAct/RetektRule/_apis/build/status/MobileAct.RetektRule?branchName=master)](https://dev.azure.com/MobileAct/RetektRule/_build/latest?definitionId=6&branchName=master) [ ![Download](https://api.bintray.com/packages/mobile-act/RetektRule/Retekt/images/download.svg) ](https://bintray.com/mobile-act/RetektRule/Retekt/_latestVersion)  
 Retekt is extension rules for detekt
+
+## Usage
+build.gradle
+```groovy
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven{ url "https://dl.bintray.com/mobile-act/RetektRule" } // need!
+    }
+}
+```
+
+```groovy
+dependencies {
+    detektPlugins 'mobile-act:retekt:VERSION' // adapt latest version
+}
+```
 
 ## Rule
 see [example config](detekt.yml)

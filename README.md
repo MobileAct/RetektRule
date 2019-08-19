@@ -1,4 +1,5 @@
 # Retekt
+[![Build Status](https://dev.azure.com/MobileAct/RetektRule/_apis/build/status/MobileAct.RetektRule?branchName=master)](https://dev.azure.com/MobileAct/RetektRule/_build/latest?definitionId=6&branchName=master)  
 Retekt is extension rules for detekt
 
 ## Rule

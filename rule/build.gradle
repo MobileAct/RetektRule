@@ -1,4 +1,10 @@
+plugins {
+    id "com.jfrog.bintray" version "1.8.4"
+}
+
 apply plugin: 'kotlin'
+apply plugin: 'java-library'
+apply plugin: "maven-publish"
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -23,3 +29,40 @@ compileTestKotlin {
         jvmTarget = "1.6"
     }
 }
+
+test { useJUnitPlatform() }
+
+String versionTag = project.hasProperty("versionTag") ? project.property("versionTag") : ""
+
+bintray {
+    user = project.hasProperty("BINTRAY_USER") ? project.property("BINTRAY_USER") : ""
+    key = project.hasProperty("BINTRAY_KEY") ? project.property("BINTRAY_KEY") : ""
+    publications = ["bintray"]
+    publish = true
+    pkg {
+        repo = "RetektRule"
+        name = "Retekt"
+        userOrg = "mobile-act"
+        licenses = ["MIT"]
+        githubRepo = "MobileAct/RetektRule"
+        version {
+            name = versionTag.replaceAll("v-", "")
+            desc = "Extension rules for detekt"
+            vcsTag = versionTag
+
+        }
+    }
+}
+
+publishing {
+    publications {
+        bintray(MavenPublication) {
+            from components.java
+            groupId "mobile-act"
+            artifactId "retekt"
+            version versionTag.replaceAll("v-", "")
+        }
+    }
+}
+
+bintrayUpload.dependsOn assemble
